@@ -1,0 +1,139 @@
+Binary Tree Representation
+---------------------------------------------------------------------------------------------
+Binary tree is a tree data structure (non-linear) in which each node can have at most two children which are referred to as the left child and the right child. The topmost node in a binary tree is called the root, and the bottom-most nodes are called leaves. A binary tree can be visualized as a hierarchical structure with the root at the top and the leaves at the bottom.
+
+Binary trees can be represented in multiple ways, each with its own advantages, depending on the use case. Let's explore the two common methods: linked node representation and array implementation.
+---------------------------------------------------------------------------------------------
+Representation of Binary Trees
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Linked Node Representation
+Array Representation
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Linked Node Representation
+
+This is the simplest way to represent a binary tree. Each node contains data and pointers to its left and right children.
+This representation is mostly used to represent binary tree with multiple advantages. The most common advantages are given below.
+
+
+Advantages:It can easily grow or shrink as needed, so it uses only the memory it needs.
+           Adding or removing nodes is straightforward and requires only pointer adjustments.
+           Only uses memory for the nodes that exist, making it efficient for sparse trees.
+
+Disadvantages:Needs extra memory for pointers.
+              Finding a node can take longer because you have to start from the root and  
+              follow pointers.
+ 
+Array Representation:      
+
+ Array Representation is another way to represent binary trees, especially useful when the tree is complete (all levels are fully filled except possibly the last, which is filled from left to right). In this method:
+
+The tree is stored in an array.
+For any node at index i:
+Left Child: Located at 2 * i + 1
+Right Child: Located at 2 * i + 2
+
+Advantages:   Easy to navigate parent and child nodes using index calculations, which is       fast
+Easier to implement, especially for complete binary trees. 
+
+Disadvantages:    You have to set a size in advance, which can lead to wasted space.
+If the tree is not complete binary tree then then many slots in the array might be empty, this will result in wasting memory
+Not as flexible as linked representations for dynamic trees.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Properties of Binary Tree
+Last Updated : 23 Jul, 2025
+This post explores the fundamental properties of a binary tree, covering its structure, characteristics, and key relationships between nodes, edges, height, and levels
+
+
+Binary tree representation
+Note: Height of root node is considered as 0.
+
+Properties of Binary Trees
+1. Maximum Nodes at Level 'l'
+A binary tree can have at most 2l nodes at level l.
+
+Level Definition: The number of edges in the path from the root to a node. The root is at level 0.
+Proof by Induction:
+Base case: For root (l = 0), nodes = 20 = 1.
+
+Inductive step: If level l has 2l nodes, then the next level has at most twice as many: 
+
+2×2l = 2l+1
+2. Maximum Nodes in a Binary Tree of Height 'h'
+A binary tree of height h can have at most 2h+1 - 1 nodes.
+
+Height Definition: The longest path from the root to a leaf node. Please note that a tree with only one root node is considered to have height 0 and an empty tree (or root is NULL) is considered to have height "-1"
+Formula Derivation: A tree has the maximum nodes when all levels are completely filled. Summing nodes at each level:  
+
+1 + 2 + 4 +...+ 2h = 2h+1 - 1
+
+Alternate Height Convention: Some books consider a tree with only one root node is considered to have height 1 and an empty tree (or root is NULL) is considered to have height 0. making the formula 2h - 1.
+3. Minimum Height for 'N' Nodes
+The minimum possible height for N nodes is ⌊log⁡2N⌋.
+
+Explanation: A binary tree with height h can have at most 2h+1 - 1 nodes.
+
+Rearranging:
+
+N ≤ 2h+1 − 1
+2h+1 ≥ N+1
+h ≥ log2​(N+1)  - 1   (Taking log2 both sides)
+h ≥ ⌊log2​N⌋
+
+This means a binary tree with N nodes must have at least ⌊log⁡2N⌋ levels.
+
+4. Minimum Levels for 'L' Leaves
+A binary tree with L leaves must have at least ⌊log⁡2L⌋ levels.
+
+Why? A tree has the maximum number of leaves when all levels are fully filled.
+
+From Property 1:
+L  ≤ 2l ( l is the level where leaves appear)
+
+Solving for l:
+lmin = ⌊log⁡2L⌋
+
+This gives the minimum levels needed to accommodate L leaves.
+
+5. Nodes with Two Children vs. Leaf Nodes
+In a full binary tree (where every node has either 0 or 2 children), the number of leaf nodes (L) is always one more than the internal nodes (T) with two children:
+
+L=T+1
+
+Proof:
+
+A full binary tree has a total of 2h+1 - 1 nodes.
+
+Leaves are at the last level: L = 2h.
+
+Internal nodes: T =2h (2−1) − 1= 2h  - 1.
+
+Simplifies to L=T+1
+
+6. Total Edges in a Binary Tree
+In any non-empty binary tree with n nodes, the total number of edges is n - 1.
+
+Every node (except the root) has exactly one parent, and each parent-child connection represents an edge.
+
+Since there are n nodes, there must be n - 1 edges.
+
+Additional Key Properties
+Node Relationships
+Each node has at most two children.
+0 children → Leaf Node
+1 child → Unary Node
+2 children → Binary Node
+Types of Binary Trees
+Full Binary Tree → Every non-leaf node has exactly two children.
+Complete Binary Tree → All levels are fully filled except possibly the last, which is filled from left to right.
+Perfect Binary Tree → Every level is completely filled, and all leaves are at the same depth.
+Balanced Binary Tree → The left and right subtrees differ in height by at most 1.
+Tree Traversal Methods
+Tree traversal is categorized into Depth-First Search (DFS) and Breadth-First Search (BFS):
+
+DFS Traversals: Explore one branch fully before backtracking.
+In-Order (LNR): Left → Node → Right (retrieves BST elements in sorted order).
+Pre-Order (NLR): Node → Left → Right (used for tree reconstruction).
+Post-Order (LRN): Left → Right → Node (helps in deleting or evaluating expressions).
+BFS Traversals: Visit nodes level by level.
+Level-Order: Processes nodes from top to bottom (used in shortest path algorithms).
+Zig-Zag Traversal: Alternates left-to-right and right-to-left at each level (used in hierarchical structures)
